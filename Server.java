@@ -55,9 +55,9 @@ public class Server {
                 
                 String [] song=new String[4];
                 song[0] = "";
-                song[1] = "E:/zik/Telo_mianaka_(Silo)_par_Sity_Rakoto.mp3";
-                song[2] = "E:/zik/Andriamanitra (Dadah Rabel - Francia et Rija Ramanantoanina.mp3";
-                song[3] ="E:/zik/RAHA TSINJONAO PB.mp3";
+                song[1] = "listes/Telo_mianaka_(Silo)_par_Sity_Rakoto.mp3";
+                song[2] = "listes/Andriamanitra (Dadah Rabel - Francia et Rija Ramanantoanina.mp3";
+                song[3] ="listes/RAHA TSINJONAO PB.mp3";
                 for (int i = 0; i < song.length; i++) {
                     if(i == Integer.valueOf(message)){
                         byte[] bytes = Files.readAllBytes(Paths.get(song[i]));

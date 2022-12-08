@@ -63,8 +63,6 @@ public class Server {
                         byte[] bytes = Files.readAllBytes(Paths.get(song[i]));
                         //ByteArrayInputStream bytein = new ByteArrayInputStream(bytes);
                 System.out.println(bytes.length);
-                //Player player = new Player(bytein);
-                //player.play();
 
                 ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
                 oos.writeObject(bytes);

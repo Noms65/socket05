@@ -24,17 +24,9 @@ public class Client{
             //write to socket using ObjectOutputStream
             oos = new ObjectOutputStream(socket.getOutputStream());
             System.out.println("Sending request to Socket Server");
+            System.out.println("choisir 1,2,3");
             
             try {
-            
-                    //FileInputStream fileInputStream = new FileInputStream(file.getSelectedFile());
-                    //System.out.println("You chose to open this file: " +file.getSelectedFile().getName());
-                    //Player player = new Player(fileInputStream);
-                    
-                    //ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                    //oos.writeObject("Hi Client :You chose to open this file: " +file.getSelectedFile().getName());
-                    //System.out.println(fileInputStream.getChannel());
-                    //player.play();
             
                     BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
                     String req = buff.readLine();
@@ -61,23 +53,6 @@ public class Client{
                 System.out.println(e);
             }
             
-            // JFrame frame = new JFrame();
-            //         frame.setSize(400, 400);
-            //         frame.setLocationRelativeTo(null);
-            //         JPanel panel = new JPanel();
-            //         panel.setLayout(null);
-            //         JLabel[] label = new JLabel[list.length];
-            //         for(int i = 0;i<list.length;i++){
-            //             label[i]=new JLabel(list[i]);
-            //             label[i].setBounds(50, (i+1)*20, 500,20 );
-            //             Clic mouse = new Clic(label[i]);
-            //             panel.add(label[i]);
-            //             panel.addMouseListener(mouse);
-            //         }
-            //         frame.add(panel);
-            //         frame.setVisible(true);
-
-            //close resources
             ois.close();
             oos.close();
             //Thread.sleep(1000);

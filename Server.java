@@ -35,21 +35,6 @@ public class Server {
             System.out.println("Message Received: " + message);
             // create ObjectOutputStream object
 
-            // FileInputStream fileInputStream = new
-            // FileInputStream("E:/zik/Telo_mianaka_(Silo)_par_Sity_Rakoto.mp3");
-
-            // FileInputStream fileInputStream = new FileInputStream("E:/zik/"+message);
-            // System.out.println("You chose to open this file: "
-            // +file.getSelectedFile().getName());
-            // Player player = new Player(fileInputStream);
-
-            // player.play();
-            // String[] listMp3 = new String[2];
-            // listMp3[0] = "E:/zik/Andriamanitra (Dadah Rabel - Francia et Rija
-            // Ramanantoanina.mp3";
-            // listMp3[1] = "E:/zik/Telo_mianaka_(Silo)_par_Sity_Rakoto.mp3";
-            // listMp3[2] = "E:/zik/FF9 isaorana anie JEHOVAH.wav";
-
             if(message != null && Integer.valueOf(message)<4){
             try {
                 

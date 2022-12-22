@@ -1,0 +1,93 @@
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.io.File;
+import java.io.FileOutputStream;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
+import uk.co.caprica.vlcj.binding.LibVlc;
+import uk.co.caprica.vlcj.player.MediaPlayerFactory;
+import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
+import uk.co.caprica.vlcj.player.embedded.windows.Win32FullScreenStrategy;
+import uk.co.caprica.vlcj.runtime.RuntimeUtil;
+import uk.co.caprica.vlcj.runtime.x.LibXUtil;
+
+
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.lang.*;
+
+/*www.codeurjava.com*/
+
+ public class Main {
+
+
+ static void chargerLibrairie(){
+ NativeLibrary.addSearchPath(
+ RuntimeUtil.getLibVlcLibraryName(), "C:\\Program Files\\VideoLAN\\VLC");
+ Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
+ LibXUtil.initialise();
+ }
+
+ 
+ 
+ static void Mamaky(String[] args) {
+  try {
+    JFrame frame = new JFrame("Tutoriel vlcj");
+    frame.setLocation(100, 100);
+    frame.setSize(1050, 600);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+
+    //Créer une instance de Canvas
+    Canvas c = new Canvas();
+    //L'arrière plan de la vidéo est noir par défaut
+    c.setBackground(Color.black);
+    JPanel p = new JPanel();
+    p.setLayout(new BorderLayout());
+    //La vidéo prend toute la surface
+    p.add(c, BorderLayout.CENTER);
+    frame.add(p, BorderLayout.CENTER);
+
+    //Créer une instance factory
+    MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
+    //Créer une instance lecteur média
+    EmbeddedMediaPlayer mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer(new Win32FullScreenStrategy(frame));
+    //mediaPlayer.setVideoSurface(mediaPlayerFactory.newVideoSurface(c));
+    //Plein écran
+    mediaPlayer.toggleFullScreen();
+    //Cacher le curseur de la souris à l'intérieur de JFrame
+    mediaPlayer.setEnableMouseInputHandling(true);
+    //Désactiver le clavier à l'intérieur de JFrame
+    mediaPlayer.setEnableKeyInputHandling(false);
+    File k = new File("D:\\FIANARANA\\DEV_JAVA\\Mp4\\andrana.mp4");
+    byte[] tab = Files.readAllBytes(Paths.get("D:\\FIANARANA\\DEV_JAVA\\Mp4\\Tayc - NUE (Clip Officiel).mp4"));
+    try (FileOutputStream fos = new FileOutputStream("D:\\FIANARANA\\DEV_JAVA\\Mp4\\andrana.mp4")){
+      fos.write(tab);
+    }
+    catch(Exception r){
+      r.printStackTrace();
+    }
+    //Préparer le fichier
+    mediaPlayer.prepareMedia("Tayc - NUE (Clip Officiel).mp4");
+    //lire le fichier 
+    mediaPlayer.play();
+ }
+   catch (Exception e) {
+    e.printStackTrace();
+  }}
+ 
+  public static void main(final String[] args) {
+    SwingUtilities.invokeLater(new Runnable() {
+    @Override
+    public void run() {
+    chargerLibrairie();
+    Mamaky(args);
+    }
+    });
+    }
+ }
